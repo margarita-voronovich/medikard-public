@@ -91,17 +91,17 @@
     nav a:hover { background-color: rgba(148, 163, 184, .12); }
 
     .hero {
-      margin-top: 20px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      align-items: center;
-      background: linear-gradient(180deg, rgba(2,6,23,.6), rgba(2,6,23,.2));
-      border: 1px solid rgba(148,163,184,.18);
-      border-radius: 20px;
-      padding: 32px;
-      box-shadow: 0 10px 40px rgba(2, 6, 23, 0.6), inset 0 1px 0 rgba(255,255,255,0.06);
-    }
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr;   /* <- ensure one column */
+  gap: 20px;
+  align-items: center;
+  background: linear-gradient(180deg, rgba(2,6,23,.6), rgba(2,6,23,.2));
+  border: 1px solid rgba(148,163,184,.18);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 10px 40px rgba(2, 6, 23, 0.6), inset 0 1px 0 rgba(255,255,255,0.06);
+}
 
     .kicker { color: var(--muted); text-transform: uppercase; letter-spacing: .16em; font-size: .8rem; }
     h1 { margin: 6px 0 12px 0; font-size: clamp(1.8rem, 2.5vw + 1rem, 2.6rem); line-height: 1.15; }
@@ -123,11 +123,17 @@
     .cta:hover { transform: translateY(-1px); filter: saturate(1.05); }
 
     .grid {
-      margin-top: 26px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-    }
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr)); /* one row of three */
+  gap: 16px;
+}
+
+    @media (max-width: 720px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
 
     .card {
       background: rgba(15, 23, 42, .7);
@@ -162,16 +168,12 @@
     .links a { color: var(--muted); text-decoration: none; }
     .links a:hover { color: var(--text); }
 
-    @media (min-width: 900px) {
-      .hero { grid-template-columns: 1.2fr .8fr; }
-    }
   </style>
 </head>
 <body>
   <div class="container">
     <header aria-label="Site Header">
       <a class="brand" href="/" aria-label="Home">
-        <span class="brand-mark" aria-hidden="true"></span>
         <span class="brand-name">Anton Sidarau</span>
       </a>
       <nav aria-label="Primary Navigation">
@@ -201,8 +203,7 @@
             <p>Solutions built with EU data-protection requirements in mind.</p>
           </article>
         </div>
-      </div>
-      <div class="card" aria-label="Company Details">
+        <div class="card" aria-label="Company Details">
         <h3 style="margin-top:0">Company Information</h3>
         <ul style="list-style:none; padding:0; margin:12px 0 0 0; color:#cbd5e1;">
           <li><strong>Legal name:</strong> Anton Sidarau (asidarau) </li>
@@ -212,6 +213,7 @@
           <li><strong>D‑U‑N‑S:</strong> 849522288 </li>
           <li><strong>Address:</strong> ul. Juliana Tuwima 48/11, 90-021 Łódź </li>
         </ul>
+      </div>
       </div>
     </section>
 
