@@ -1,35 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anton Sidarau</title>
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      max-width: 700px;
-      margin: 60px auto;
-      padding: 0 20px;
-      line-height: 1.6;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anton Sidarau — Official Site</title>
+  <meta name="description" content="Official website of Anton Sidarau (asidarau) — software and automation solutions." />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:title" content="Anton Sidarau — Official Site" />
+  <meta property="og:description" content="Software, automation, and digital solutions for modern businesses." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://asidarau.eu/" />
+  <meta name="theme-color" content="#0ea5e9" />
+
+  <!-- JSON-LD: Organization schema (fill in legal details exactly as in CEIDG/D-U-N-S) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Anton Sidarau",
+    "url": "https://asidarau.eu/",
+    "email": "info@asidarau.eu",
+    "logo": "https://asidarau.eu/icon.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "PL"
     }
-    header { text-align: center; margin-bottom: 2em; }
-    h1 { font-size: 2em; }
-    a { color: #0070f3; text-decoration: none; }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: #0f172a;
+      --muted: #94a3b8;
+      --text: #e2e8f0;
+      --accent: #38bdf8; /* sky-400 */
+      --accent-2: #818cf8; /* indigo-400 */
+      --ring: rgba(56, 189, 248, 0.3);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(1200px 800px at 10% -10%, rgba(129, 140, 248, .25), transparent 60%),
+        radial-gradient(1000px 600px at 90% -20%, rgba(56, 189, 248, .25), transparent 60%),
+        linear-gradient(180deg, #0b1220 0%, #0b1220 100%);
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 0 8px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 8px 30px rgba(56, 189, 248, 0.25), inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+    .brand-name { font-weight: 700; letter-spacing: .2px; }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      opacity: .9;
+      padding: 8px 10px;
+      border-radius: 10px;
+    }
+    nav a:hover { background-color: rgba(148, 163, 184, .12); }
+
+    .hero {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      align-items: center;
+      background: linear-gradient(180deg, rgba(2,6,23,.6), rgba(2,6,23,.2));
+      border: 1px solid rgba(148,163,184,.18);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 10px 40px rgba(2, 6, 23, 0.6), inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+
+    .kicker { color: var(--muted); text-transform: uppercase; letter-spacing: .16em; font-size: .8rem; }
+    h1 { margin: 6px 0 12px 0; font-size: clamp(1.8rem, 2.5vw + 1rem, 2.6rem); line-height: 1.15; }
+    .lead { color: #cbd5e1; font-size: 1.1rem; max-width: 70ch; }
+
+    .cta {
+      margin-top: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #0b1220;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 10px 30px var(--ring);
+    }
+    .cta:hover { transform: translateY(-1px); filter: saturate(1.05); }
+
+    .grid {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, .7);
+      border: 1px solid rgba(148,163,184,.18);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 8px 30px rgba(2, 6, 23, 0.5), inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+    .card h3 { margin: 6px 0 6px 0; font-size: 1.05rem; }
+    .card p { margin: 0; color: #cbd5e1; font-size: .95rem; }
+
+    .info {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .muted { color: var(--muted); font-size: .95rem; }
+
+    footer {
+      margin: 40px 0 20px 0;
+      color: var(--muted);
+      font-size: .9rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .links a { color: var(--muted); text-decoration: none; }
+    .links a:hover { color: var(--text); }
+
+    @media (min-width: 900px) {
+      .hero { grid-template-columns: 1.2fr .8fr; }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Welcome!</h1>
-    <p>We provide software, automation, and digital solutions.</p>
-  </header>
+  <div class="container">
+    <header aria-label="Site Header">
+      <a class="brand" href="/" aria-label="Home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">Anton Sidarau</span>
+      </a>
+      <nav aria-label="Primary Navigation">
+        <a href="/support">Support</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="mailto:info@asidarau.eu">Contact</a>
+      </nav>
+    </header>
 
-  <main>
-    <p>We build modern tools and technologies for businesses and individuals.</p>
-    <p><a href="mailto:info@asidarau.eu">Contact</a></p>
-  </main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <div class="kicker">Official Organization Page</div>
+        <h1 id="hero-title">Software, Automation & Digital Solutions</h1>
+        <p class="lead">We design and develop modern tools for individuals and businesses with a focus on reliability, privacy, and clear user experience.</p>
+        <p>
+          <a class="cta" href="mailto:info@asidarau.eu" aria-label="Email us at info@asidarau.eu">Contact Us</a>
+        </p>
+        <div class="grid" role="list" aria-label="Key Capabilities">
+          <article class="card" role="listitem">
+            <h3>iOS & Web</h3>
+            <p>Swift/SwiftUI and modern web stacks for fast, secure, and accessible apps.</p>
+          </article>
+          <article class="card" role="listitem">
+            <h3>Automation</h3>
+            <p>Integrations and workflows that reduce manual work and improve quality.</p>
+          </article>
+          <article class="card" role="listitem">
+            <h3>Data & Privacy</h3>
+            <p>Solutions built with EU data-protection requirements in mind.</p>
+          </article>
+        </div>
+      </div>
+      <div class="card" aria-label="Company Details">
+        <h3 style="margin-top:0">Company Information</h3>
+        <p class="muted">Provide details exactly as registered for verification.</p>
+        <ul style="list-style:none; padding:0; margin:12px 0 0 0; color:#cbd5e1;">
+          <li><strong>Legal name:</strong> Anton Sidarau</li>
+          <li><strong>Email:</strong> <a href="mailto:info@asidarau.eu">info@asidarau.eu</a></li>
+          <li><strong>Registered country:</strong> Poland (PL)</li>
+          <li><strong>D‑U‑N‑S:</strong> <!-- add when available --> </li>
+          <li><strong>Address:</strong> <!-- add CEIDG/KRS address here --></li>
+        </ul>
+      </div>
+    </section>
 
-  <footer>
-    <p>© 2025 Anton Sidarau</p>
-  </footer>
+    <section class="info" aria-label="Additional Links">
+      <div class="card">
+        <h3>Support</h3>
+        <p>Need help? Visit the <a href="/support">Support</a> page or email <a href="mailto:info@asidarau.eu">info@asidarau.eu</a>.</p>
+      </div>
+      <div class="card">
+        <h3>Privacy & Terms</h3>
+        <p>Read our <a href="/privacy">Privacy Policy</a> and <a href="/terms">Terms of Use</a>.</p>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Anton Sidarau</div>
+      <div class="links">
+        <a href="/privacy">Privacy</a> ·
+        <a href="/terms">Terms</a> ·
+        <a href="/support">Support</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
